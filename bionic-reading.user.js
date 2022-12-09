@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name              Bionic Reading / ⌘ + B
 // @name:zh           英文前部加粗 / ⌘ + B
-// @namespace         https://github.com/itorr/bionic-reading.user.js
+// @namespace         https://github.com/bigshans/bionic-reading.user.js
 // @version           0.8.4
 // @description       Bionic Reading User Script Ctrl + B / ⌘ + B
 // @description:zh    网页英文前部加粗脚本 Ctrl + B / ⌘ + B 开启关闭
@@ -18,12 +18,12 @@
 
 
 const defaultConfig = {
-    key: 'b',
+    key: 'x',
     autoBionic: true,
     skipLinks: false,
     skipWords: false,
     scale: 0.5,
-    maxBionicLength: null,
+    maxBionicLength: 2,
     opacity: 1,
     saccade: 0, // 0 - ~
     symbolMode: false,
