@@ -298,6 +298,75 @@ document.addEventListener('keydown',e=>{
     }
 })
 
+function newElementForBionic() {
+  const rule = `
+  #bionic-reader {
+  position: fixed;
+  height: 24px;
+  width: 24px;
+  bottom: 20px;
+  left: 20px;
+  font-size: 12px;
+  border-radius: 50%;
+  border: 1px solid black !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  }
+  `;
+  const div = document.createElement('div');
+  div.innerText = "B";
+  div.id = "bionic-reader";
+  const setBgFg = (bg, fg) => {
+    div.style.backgroundColor = bg;
+    div.style.setProperty("color", fg, "important")
+  };
+  const switchBionic = (isBionic) => {
+    if (isBionic) {
+      setBgFg("black", "white");
+    } else {
+      setBgFg("white", "black");
+    }
+  };
+  switchBionic(isBionic);
+  div.addEventListener("click", () => {
+    switchBionic(!isBionic);
+    if(isBionic){
+      revoke();
+    }else{
+      bionic();
+    }
+  });
+  let t;
+  const disappear = () => {
+    t = setTimeout(() => {
+      t = null;
+    }, 300);
+    div.style.opacity = 0;
+  };
+  div.addEventListener("mouseover", () => {
+    div.style.opacity = 1;
+  });
+  div.addEventListener("mouseout", () => {
+    if (t) {
+      clearTimeout(t);
+    }
+    disappear();
+  });
+  div.style.opacity = 0;
+  try {
+    document.body.appendChild(div);
+    const sheet = document.styleSheets[0];
+    sheet.insertRule(rule, sheet.cssRules.length);
+  } catch (e) {
+    const styleSheet = document.createElement("style");
+    styleSheet.innerText = rule;
+    document.head.appendChild(styleSheet);
+  }
+}
+
+newElementForBionic();
 
 // let id = base.registerMenuCommand ('Setting', function(){
 //     // 配置相关
