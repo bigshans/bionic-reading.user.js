@@ -19,7 +19,7 @@
 
 const defaultConfig = {
     key: 'x',
-    autoBionic: true,
+    autoBionic: false,
     skipLinks: false,
     skipWords: false,
     scale: 0.5,
